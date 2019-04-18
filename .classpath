@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="src" path="算法练习"/>
+	<classpathentry kind="src" path="数据结构与算法练习"/>
 	<classpathentry kind="src" path="leetcode"/>
 	<classpathentry kind="src" path="笔试面试真题"/>
+	<classpathentry kind="src" path="剑指offer"/>
+	<classpathentry kind="src" path="程序员代码面试指南"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
