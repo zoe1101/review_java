@@ -24,6 +24,10 @@ public class ±äÌ¬ÌøÌ¨½× {
     	}
     	return sum;
     }
+    
+    
+   
+
 	public static void main(String[] args) {
 	    int target=3;
 	    System.out.println(JumpFloorII(target));

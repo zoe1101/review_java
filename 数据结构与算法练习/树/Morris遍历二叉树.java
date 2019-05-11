@@ -1,5 +1,5 @@
 package 树;
- 
+
 //时间复杂度为O(N), 额外空间复杂度为O(1)
 //利用的是线索二叉树思想
 public class Morris遍历二叉树 {
@@ -12,7 +12,32 @@ public class Morris遍历二叉树 {
 		}
 	}
 	/**
-	 * Morris 先序遍历二叉树(第一次发现节点就打印：①左子树的右孩子为空时打印 ②无左子树时打印)
+	 * Morris序  , 存在重复打印的情况
+	 * @param node
+	 */
+	public static void morrisTraversal(TreeNode node) {
+		if(node==null) return;
+		TreeNode curNode=node;
+		TreeNode mostRightNode=null;
+		while (curNode!=null) {
+			mostRightNode=curNode.right;  
+			if(mostRightNode!=null) {//当前节点有左子树
+				//找到当前节点左子树的最右的节点
+				while(mostRightNode.right!=null &&mostRightNode.right!=curNode) {
+					mostRightNode=mostRightNode.right;
+				}
+				if(mostRightNode.right==null) {
+					mostRightNode.right=curNode;
+					curNode=curNode.left;
+					continue; //回到最外层的while，继续判断curNode的情况
+				}else { //最右的节点指向当前节点时
+					mostRightNode.right=null;
+				}
+			}
+			curNode=curNode.right; //当前节点没有左子树或其左子树最右节点的右指针指向当前节点时，则向右移动
+		}
+	}
+    /** Morris 先序遍历二叉树(第一次发现节点就打印：①左子树的右孩子为空时打印 ②无左子树时打印)
 	 * @param node
 	 */
 	public static void preorderMorrisTraversal(TreeNode node) {
@@ -21,20 +46,20 @@ public class Morris遍历二叉树 {
 			return;
 		}
 		TreeNode cur=node;
-		TreeNode next=null;
+		TreeNode mostRight=null;
 		while (cur!=null) {
-			next=cur.left;
-			if(next!=null) {
-				while (next.right!=null & next.right!=cur) {//找到左子树最右节点
-					next=next.right;
+			mostRight=cur.left;
+			if(mostRight!=null) {
+				while (mostRight.right!=null & mostRight.right!=cur) {//找到左子树的最右节点
+					mostRight=mostRight.right;
 				}
-				if(next.right==null) { //最右点的右指针指向null
-					next.right=cur; //右指针指向当前节点
+				if(mostRight.right==null) { //最右点的右指针指向null
+					mostRight.right=cur; //右指针指向当前节点
 					System.out.print(cur.val + " ");
 					cur=cur.left;  //当前node向左孩子移动
-					continue;
+					continue; //回到最外层的while，继续判断curNode的情况
 				}else { //最右点的右指针已经指向当前节点，让它指向null
-					next.right=null;
+					mostRight.right=null;
 				}
 			}else {
 				System.out.print(cur.val + " ");
@@ -53,20 +78,20 @@ public class Morris遍历二叉树 {
 			System.out.println("树为空");
 			return;
 		}
-		TreeNode cur=node;//当前node
-		TreeNode next = null;//当前node左子树最右的节点
+		TreeNode cur=node;//当前节点
+		TreeNode mostRight = null;//当前节点左子树最右的节点
 		while (cur!=null) {
-			next=cur.left;
-			if(next!=null) { //左节点存在
-				while (next.right!=null && next.right!=cur) {// 不等于cur，说明未遍历过，设置线索，并跳到该左子树
-					next=next.right;
+			mostRight=cur.left;
+			if(mostRight!=null) { //有左子树
+				while (mostRight.right!=null && mostRight.right!=cur) {//找到左子树的最右节点
+					mostRight=mostRight.right;
 				}
-				if(next.right==null) { //说明该左子树已处理完毕，恢复原指针
-					next.right=cur;
+				if(mostRight.right==null) { //说明该左子树已处理完毕，恢复原指针
+					mostRight.right=cur;
 					cur=cur.left;
 					continue;
 				}else { //该节点的左子树已处理完毕,转向右子树
-					next.right=null;
+					mostRight.right=null;
 				}
 			}
 			System.out.print(cur.val+" ");
@@ -85,19 +110,19 @@ public class Morris遍历二叉树 {
 			return;
 		}
 		TreeNode cur=node;
-		TreeNode next=null;
+		TreeNode mostRight=null;
 		while (cur!=null){
-			next=cur.left;
-			if(next!=null) {
-				while (next.right!=null && next.right!=cur) {
-					next=next.right;
+			mostRight=cur.left;
+			if(mostRight!=null) {
+				while (mostRight.right!=null && mostRight.right!=cur) {
+					mostRight=mostRight.right;
 				}
-				if(next.right==null) {
-					next.right=cur;
+				if(mostRight.right==null) {
+					mostRight.right=cur;
 					cur=cur.left;
 					continue;
-				}else {
-					next.right=null;
+				}else {//第二次到达时
+					mostRight.right=null;
 					printEdge(cur.left);
 				}
 			}
