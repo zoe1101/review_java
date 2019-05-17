@@ -13,7 +13,7 @@ public class 找到二叉树中的最大搜索二叉树 {
 	    }
 	}
 	
-	public static class returnType{
+	private static class returnType{
 		public TreeNode maxBSTHead;
 		public int maxBSTSize;
 		public int min;
