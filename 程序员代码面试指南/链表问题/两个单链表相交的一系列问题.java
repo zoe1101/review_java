@@ -1,7 +1,5 @@
 package 链表问题;
 
-import java.lang.annotation.Native;
-
 
 /*
  * 链表是否有环

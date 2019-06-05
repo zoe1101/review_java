@@ -1,6 +1,5 @@
 package 链表问题;
 
-import 链表问题.打印两个有序链表的公共部分.Node;
 
 public class 单链表和双链表中删除倒数第K个节点 {
 	public static class Node { //单链表
