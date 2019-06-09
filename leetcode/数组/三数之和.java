@@ -15,6 +15,8 @@ import java.util.List;
 ]
  */
 //难度：meduim
+
+//固定一个，找后两个
 class 三数之和 {
 	//一遍哈希表
     public int hash1(int[] nums) {
