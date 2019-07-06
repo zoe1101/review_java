@@ -1,7 +1,7 @@
 package 排序算法;
 
 import java.util.Arrays;
-
+//时间复杂度O(N*logN)， 额外空间复杂度O(1)
 public class 堆排序 {
 
     //test

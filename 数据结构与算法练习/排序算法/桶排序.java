@@ -5,6 +5,9 @@ import java.util.Collections;
 
 public class 桶排序 {
 	public static void buckeSort(int[] arr) {
+		if (arr==null || arr.length<2) {
+			return;
+		}
 		int max = Integer.MIN_VALUE; //数组中的最大值
 	    int min = Integer.MAX_VALUE;  //数组中的最小值
 	    for(int i = 0; i < arr.length; i++){
@@ -12,7 +15,7 @@ public class 桶排序 {
 	        min = Math.min(min, arr[i]);
 	    }
 	    
-	    int bucketNum = (max - min) / arr.length + 1;//桶数
+	    int bucketNum = (max - min) / arr.length + 1; //桶数
 	    ArrayList<ArrayList<Integer>> bucketArr = new ArrayList<>(bucketNum); //桶数组
 	    for(int i = 0; i < bucketNum; i++){
 	        bucketArr.add(new ArrayList<Integer>());

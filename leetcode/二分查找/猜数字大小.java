@@ -17,7 +17,7 @@ public class 猜数字大小 {
         int left=1,right=n;
         while(left<=right){
             int mid=left+(right-left)/2;
-            int t=guess(mid);
+            int t=guess(mid); //预先定义好的接口 guess(int num)
             if(t==0){
                 return mid;
             }else if(t==1){//在右侧,猜小了
@@ -28,9 +28,5 @@ public class 猜数字大小 {
         }
         return left;
     }
-	public static void main(String[] args) {
-		// TODO 自动生成的方法存根
-
-	}
 
 }
